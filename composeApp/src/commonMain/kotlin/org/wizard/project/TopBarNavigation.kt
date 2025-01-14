@@ -37,30 +37,36 @@ fun TopBarNavigation(
         else -> ""
     }
 
-    TopAppBar(
-        modifier = modifier,
-        title = {
-            Text(
-                text = title,
-                color = Color.Black
-            )
-        },
-        backgroundColor = Color.White,
-        navigationIcon =
-        if (navController.previousBackStackEntry != null &&
-            !bottomNavigationItemRouteList.contains(currentRoute)
-        ) {
-            {
-                IconButton(onClick = { navController.navigateUp() }) {
-                    Icon(
-                        imageVector = Icons.Filled.ArrowBack,
-                        tint = Color.Black,
-                        contentDescription = null
-                    )
+    if(currentRoute == Routes.SPLASH_SCREEN){
+
+    }else {
+        TopAppBar(
+            modifier = modifier,
+            title = {
+                Text(
+                    text = title,
+                    color = Color.Black
+                )
+            },
+            backgroundColor = Color.White,
+            navigationIcon =
+            if (navController.previousBackStackEntry != null &&
+                !bottomNavigationItemRouteList.contains(currentRoute)
+            ) {
+                {
+                    IconButton(onClick = { navController.navigateUp() }) {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
+                            tint = Color.Black,
+                            contentDescription = null
+                        )
+                    }
                 }
+            } else {
+                null
             }
-        } else {
-            null
-        }
-    )
+        )
+    }
+
+
 }
